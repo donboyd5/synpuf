@@ -5,4 +5,6 @@ Repository in relation to constructing a fully synthetic PUF database from the a
 
 Interested OSPC members are likely to include @andersonfrailey, @MaxGhenis, and @MattHJensen.
 
+I've set this up in my github user account for now but we can transfer it to an OSPC account whenever that makes sense.
+
 
