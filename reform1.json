@@ -1,0 +1,7 @@
+// Increase Max EITC Amount
+// Decrease Standard Deduction
+{
+    "policy": {
+        "_EITC_c": {"2019": [[1000, 7000, 10000, 12000]]}
+    }
+}
