@@ -1,0 +1,210 @@
+vnum,vname,vdesc,category
+1,e00200,Salaries and wages,income
+2,e00300,Interest received,income
+3,e00400,Tax-exempt interest income,income
+4,e00600,Dividends included in AGI,income
+5,e00650,Qualified Dividends,income
+6,e00700,State income tax refunds,income
+7,e00800,Alimony received,income
+8,e00900,Business or profession (Schedule C) net profit/loss (+/-),income
+9,e01000,Net capital gain or loss (+/-),income
+10,e01100,Capital gain distributions reported on Form 1040,income
+11,e01200,Other gains (or loss)  (+/-),income
+12,e01400,Taxable IRA distribution,income
+13,e01500,Total pensions and annuities received,income
+14,e01700,Pensions and annuities included in AGI,income
+15,e02000,Schedule E net income or loss (+/-),income
+16,e02100,Schedule F net profit/loss (+/-),income
+17,e02300,Unemployment compensation in AGI,income
+18,e02400,Gross Social Security benefits,income
+19,e02500,Social Security benefits in AGI,income
+20,e03150,Total deductible individual retirement account (IRA) payments,stat_adjust
+21,e03210,Student Loan Interest Deduction,stat_adjust
+22,e03220,Educator Expenses,stat_adjust
+23,e03230,Tuition and Fees Deduction,stat_adjust
+24,e03260,Deduction for self-employment tax,stat_adjust
+25,e03270,Self-employed health insurance deduction,stat_adjust
+26,e03240,Domestic Production Activities deduction,stat_adjust
+27,e03290,Health Savings Account deduction,stat_adjust
+28,e03300,Payments to KEOGH accounts,stat_adjust
+29,e03400,Forfeited interest penalty,stat_adjust
+30,e03500,Alimony paid,stat_adjust
+31,e00100,Adjusted Gross Income (deficit)  (AGI)  (+/-),agi
+32,p04470,Total deductions (standard or itemized),tax_comp
+33,e04250,Real Estate Tax Deduction from Standard Deduction (Prior Year),tax_comp
+34,e04600,Exemption amount,tax_comp
+35,e04800,Taxable income,tax_comp
+36,e05100,Tax on taxable income,tax_comp
+37,e05200,Computed regular tax,tax_comp
+38,e05800,Income tax before credits,tax_comp
+39,e06000,Income subject to tax,tax_comp
+40,e06200,Marginal tax base,tax_comp
+41,e06300,Tax generated (tax rate tables),tax_comp
+42,e09600,Alternative minimum tax,tax_comp
+43,e07180,Child and dependent care,credits
+44,e07200,Elderly or disabled,credits
+45,e07220,Child Tax Credit,credits
+46,e07230,Education Credits,credits
+47,e07240,Retirement Savings Credit,credits
+48,e07260,Residential Energy Credit,credits
+49,e07300,Foreign tax,credits
+50,e07400,General business credit,credits
+51,e07600,Credit for prior year minimum tax,credits
+52,p08000,Other Credits,credits
+53,e07150,Total tax credit (SOI),credits
+54,e06500,Total income tax,taxes
+55,e08800,Income Tax after Credits (SOI),taxes
+56,e09400,Self-employment tax,taxes
+57,e09700,Recapture taxes,taxes
+58,e09800,Social security tax on tip income,taxes
+59,e09900,Penalty tax on IRA,taxes
+60,e10300,Total tax liability (SOI),taxes
+61,e10700,Income tax withheld,payments
+62,e10900,Estimated tax payments,payments
+63,e10950,Making Work Pay Credit (Prior Year),payments
+64,e10960,Refundable Education Credit,payments
+65,e59560,Earned income for earned income credit (EIC),payments
+66,e59680,EIC used to offset income tax before credits,payments
+67,e59700,EIC used to offset all other taxes except advance EIC,payments
+68,e59720,EIC refundable portion,payments
+69,e11550,Refundable Credit Payment,payments
+70,e11070,Additional Child Tax Credit,payments
+71,e11100,Amount paid with Form 4868 (Request for Extension),payments
+72,e11200,Excess FICA/RRTA,payments
+73,e11300,Credit for federal tax on special fuels and oils,payments
+74,e11400,Regulated investment company credit,payments
+75,e11601,Total Refundable Credits Used to Offset Income Tax Before Credits,payments
+76,e11602,Total Refundable Credits Used to Offset All Other Taxes,payments
+77,e11603,Total Refundable Credits Refundable Parts,payments
+78,e10605,Total tax payments (SOI),payments
+79,e11900,Balance due (overpayment) (+/-),refund
+80,e12000,Credit elect,refund
+81,e12200,Predetermined estimated tax penalty,refund
+82,e17500,Medical and dental expenses subject to reduction by AGI limit,schedA
+83,e18400,State and local taxes,schedA
+84,e18500,Real estate tax deductions,schedA
+85,e18600,Motor Vehicle Tax,schedA
+86,e19200,Total interest paid deduction,schedA
+87,e19550,Qualified Mortgage Insurance Premiums,schedA
+88,e19800,Cash contributions,schedA
+89,e20100,Other than cash contributions,schedA
+90,e19700,"Contributions deduction, total",schedA
+91,e20550,Unreimbursed employee business expense,schedA
+92,e20600,Tax preparation fee,schedA
+93,e20400,"Miscellaneous deductions subject to AGI limitation, total",schedA
+94,e20800,Net limited miscellaneous deductions,schedA
+95,e20500,Net casualty or theft loss,schedA
+96,e21040,Itemized deduction limitation (Prior Year),schedA
+97,p22250,Short-term gains less losses,schedD
+98,e22320,Long term gain/loss from other forms on Schedule D,schedD
+99,e22370,Schedule D capital gain distributions,schedD
+100,p23250,Long-term gains less losses,schedD
+101,e24515,Unrecaptured Section 1250 gain,schedD
+102,e24516,Capital gain less investment expense,schedD
+103,e24518,28% Rate Gain or Loss,schedD
+104,e24560,Non-Schedule D tax,schedD
+105,e24598,Schedule D 15 percent tax amount,schedD
+106,e24615,Schedule D 25 percent tax amount,schedD
+107,e24570,Schedule D 28 percent tax amount,schedD
+108,p25350,Total rents and royalties received,schedE
+109,p25380,Rent/Royalty Expenses,schedE
+110,e25550,Total Depreciation and Depletion of all Property,schedE
+111,p25700,Rent/royalty net income or loss (+/-),schedE
+112,e25820,Deductible rental loss,schedE
+113,e25850,Rent/royalty net income,schedE
+114,e25860,Rent/royalty net loss,schedE
+115,e25940,Total passive income,partnerships
+116,e25980,Total non-passive income,partnerships
+117,e25920,Total passive loss,partnerships
+118,e25960,Total non-passive loss,partnerships
+119,e26110,Partnership Section 179 expense deduction,partnerships
+120,e26170,Total passive income,smallbuscorp
+121,e26190,Total non-passive income,smallbuscorp
+122,e26160,Total passive loss,smallbuscorp
+123,e26180,Total non-passive loss,smallbuscorp
+124,e26270,Combined partnership and S corporation net income/loss (+/-),smallbuscorp
+125,e26100,S-corp. Section 179 expense deduction,smallbuscorp
+126,e26390,Total income,estate_trust
+127,e26400,Total loss,estate_trust
+128,e27200,Farm rent net income or loss (+/-),farm_rental
+129,e30400,Total self-employment income subject to SS Tax,schedSE
+130,e30500,"Self-employment income subject to SS Tax, secondary taxpayer",schedSE
+131,e32800,Qualifying individuals' Expenses,form2441
+132,e33000,Expenses limited to earned income,form2441
+133,e53240,Work Opportunity - Jobs (included in general business credit),form3800
+134,e53280,Research and experimentation (included in general business credit),form3800
+135,e53410,Unlimited General Business Credit (Prior Year),form3800
+136,e53300,Low Income Housing Credit,form3800
+137,e53317,Employer Credit for Social Security Tax on Tips,form3800
+138,e58950,Total investment Interest Expense,form4952
+139,e58990,Investment income (Form 4952 part 2 line 4g),form4952
+140,p60100,Net operating loss tax preference,form6251
+141,p61850,Total adjustments and preferences (+/-),form6251
+142,e60000,"Form 1040 Taxable Income for AMT (Form 6251, Line 1)",form6251
+143,e62100,Alternative minimum taxable income,form6251
+144,e62900,Alternative tax foreign tax credit,form6251
+145,e62720,Alternative minimum Schedule D less investment interest amount,form6251
+146,e62730,Alternative minimum Schedule D unrecaptured section 1250 gain,form6251
+147,e62740,Alternative minimum capital gain amount,form6251
+148,p65300,Total passive net income,form8582
+149,p65400,Total passive losses,form8582
+150,e68000,Total losses allowed from all passive activities,form8582
+151,e82200,Carry forward of minimum tax credit,form8801
+152,t27800,Elected Farm Income,schedJ
+153,s27860,Tentative Current and Prior-Year Tax,schedJ
+154,p27895,Actual Prior-Year Tax,schedJ
+155,p87482,American Opportunity Qualified Expenses,form8863
+156,e87521,American Opportunity Credit,form8863
+157,e87530,Lifetime Learning Total Qualified Expenses,form8863
+158,e87550,Lifetime Learning Credit,form8863
+159,p86421,Bond Purchase Amount,form8888
+160,e15100,Net Disaster Loss,schedLPriorYear
+161,e15210,Basic Standard Deduction,schedLPriorYear
+162,e15250,Real Estate Tax,schedLPriorYear
+163,e15360,Motor Vehicle Tax,schedLPriorYear
+165,e87870,Limited Making Work Pay Credit,schedMPriorYear
+166,e87875,Economic Recovery Payment,schedMPriorYear
+167,e87880,Government Pension or Annuity Received,schedMPriorYear
+168,recid,Return ID,misc_codes
+169,s006,Decimal weight,misc_codes
+170,s008,Sample count,misc_codes
+171,s009,Population count,misc_codes
+172,wsamp,Sample code,misc_codes
+173,txrt,Tax rate code,misc_codes
+1000,agir1,Adjusted Gross Income (AGI) Range,manual
+1001,dsi,Dependent Status Indicator,manual
+1002,efi,Electronic Filing Indicator,manual
+1003,eic,Earned Income Credit Code,manual
+1004,elect,Presidential Election Campaign Fund Boxes,manual
+1005,fded,Form of Deduction Code,manual
+1006,flpdyr,"Filing (Accounting) Period, Year",manual
+1007,flpdmo,"Filing (Accounting) Period, Month",manual
+1008,f2441,"Form 2441, Child Care Credit Qualified Individual",manual
+1009,f3800,"Form 3800, General Business credit",manual
+1010,f6251,"Form 6251, Alternative Minimum Tax",manual
+1011,f8582,"Form 8582, Passive Activity Loss Limitation",manual
+1012,f8606,"Form 8606, Nondeductible IRA Contributions",manual
+1013,f8829,"Form 8829, Expenses for business use of your Home",manual
+1014,f8867,"Form 8867, Paid Preparer’s Earned Income Credit Checklist",manual
+1015,f8910,"Form 8910, Alternative Motor Vehicle Credit",manual
+1016,f8949,"Form 8949, Sales and Other Dispositions of Capital Assets",manual
+1017,ie,Itemized Deductions Election Indicator,manual
+1018,mars,Marital (Filing) Status,manual
+1019,midr,Married Filing Separately Itemized Deductions Requirement Indicator,manual
+1020,n20,Number of Qualified Students for Hope Credit,manual
+1021,n24,Number of Children for Child Tax Credit,manual
+1022,n25,Number of Qualified Students for Lifetime Learning Credit,manual
+1023,n30,Number of Qualified Students for American Opportunity Credit,manual
+1024,prep,Tax Preparer Indicator,manual
+1025,schb,Schedule B Indicator,manual
+1026,schcf,Schedule C or F Indicator,manual
+1027,sche,Schedule E Indicator,manual
+1028,tform,Form of Return,manual
+1029,txst,Tax Status,manual
+1030,xfpt,Primary Taxpayer Exemption,manual
+1031,xfst,Secondary Taxpayer Exemption,manual
+1032,xocah,Exemptions for Children Living at Home,manual
+1033,xocawh,Exemptions for Children Living Away from Home,manual
+1034,xoodep,Exemptions for Other Dependents,manual
+1035,xopar,Exemptions for Parents Living at Home or Away from Home,manual
+1036,xtot,Total Exemptions,manual
