@@ -4,6 +4,8 @@ import synthimpute as si
 import rpy2.robjects as robjects
 from rpy2.robjects import r, pandas2ri
 
+
+# Columns to synthesize listed in https://github.com/donboyd5/synpuf/issues/4.
 COLS = [
     'dsi',
     'e00200',
