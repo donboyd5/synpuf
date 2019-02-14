@@ -11,6 +11,7 @@ setup(name='synpuf',
       install_requires=[
           'numpy',
           'pandas',
-          'synthimpute'
+          'synthimpute',
+          'rpy2'
       ],
       zip_safe=False)
