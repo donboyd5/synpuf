@@ -1,5 +1,9 @@
 import pandas as pd
 import synthimpute as si
+# Also requires installing tzlocal
+from rpy2.robjects.packages import importr
+import rpy2.robjects as robjects
+from rpy2.robjects import r, pandas2ri
 
 COLS = [
     'dsi',
@@ -68,7 +72,9 @@ COLS = [
     's006',
     'xtot']
 
+
 AGG_RECIDS = [999996, 999997, 999998, 999999]
+
 
 def load_puf(f='puf2011.csv'):
     """Load raw PUF for synthesis.
@@ -86,7 +92,7 @@ def load_puf(f='puf2011.csv'):
 
 
 def synthesize_puf_rf(puf=None, random_state=0, seed_cols=['DSI', 'XTOT'], trees=20):
-    """Synthesize PUF.
+    """Synthesize PUF via random forests.
     
     Args:
         puf: PUF file produced from load_puf(). If not provided, will load via load_puf().
@@ -100,3 +106,22 @@ def synthesize_puf_rf(puf=None, random_state=0, seed_cols=['DSI', 'XTOT'], trees
     if puf is None:
         puf = load_puf()
     return si.rf_synth(puf, random_state=random_state, seed_cols=seed_cols, trees=trees)
+
+
+def synthesize_puf_synthpop(puf=None):
+    """Synthesize PUF via synthpop R package (CART).
+    
+    Args:
+        puf: PUF file produced from load_puf(). If not provided, will load via load_puf().
+ 
+    Returns:
+        PUF synthesis produced via CART.
+    """
+    if puf is None:
+        puf = load_puf()
+    pandas2ri.activate()
+    robjects.r('library(synthpop)')
+    robjects.globalenv['puf'] = puf
+    return robjects.r('syn(puf)$syn')
+    
+    
