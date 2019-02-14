@@ -94,7 +94,7 @@ def load_puf(f='puf2011.csv'):
     """
     # Include RECID to exclude 4 aggregate records.
     input_cols = [x.upper() for x in COLS] + ['RECID']
-    raw = pd.read_csv('puf2011.csv', usecols=input_cols)
+    raw = pd.read_csv(f, usecols=input_cols)
     # Calculate differences of variables that must be nonnegative for Tax-Calculator to run.
     # Per https://github.com/donboyd5/synpuf/issues/17, e00600 must be weakly greater than
     # e00650 and e01500 must be weakly greater than e01700.
