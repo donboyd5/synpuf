@@ -74,9 +74,15 @@ COLS = [
     'xtot']
 
 
-SEED_COLS = ['MARS', 'E00100', 'E09600', 'XTOT', 'S006']
+CALCULATED_COLS = ['e00100', 'e09600']
+
+
+# Consider adding E00100 and E09600.
+SEED_COLS = ['MARS', 'XTOT', 'S006']
 CLASSIFICATION_COLS = ['F6251', 'MIDR', 'FDED', 'DSI']
-SEED_COLS += CLASSIFICATION_COLS  # Until rf_synth handles classification.
+SEED_COLS = (SEED_COLS +
+             [x.upper() for x in CALCULATED_COLS] +
+             CLASSIFICATION_COLS)  # Until rf_synth handles classification.
 
 
 AGG_RECIDS = [999996, 999997, 999998, 999999]
@@ -93,7 +99,7 @@ def load_puf(f='puf2011.csv'):
         Also subtracts features that should be nonnegative.
     """
     # Include RECID to exclude 4 aggregate records.
-    input_cols = [x.upper() for x in COLS] + ['RECID']
+    input_cols = [x.upper() for x in COLS + CALCULATED_COLS] + ['RECID']
     raw = pd.read_csv(f, usecols=input_cols)
     # Calculate differences of variables that must be nonnegative for Tax-Calculator to run.
     # Per https://github.com/donboyd5/synpuf/issues/17, e00600 must be weakly greater than
