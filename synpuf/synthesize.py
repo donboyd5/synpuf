@@ -74,6 +74,11 @@ COLS = [
     'xtot']
 
 
+SEED_COLS = ['MARS', 'E00100', 'E09600', 'XTOT', 'S006']
+CLASSIFICATION_COLS = ['F6251', 'MIDR', 'FDED', 'DSI']
+SEED_COLS += CLASSIFICATION_COLS  # Until rf_synth handles classification.
+
+
 AGG_RECIDS = [999996, 999997, 999998, 999999]
 
 
@@ -85,28 +90,52 @@ def load_puf(f='puf2011.csv'):
         
     Returns:
         DataFrame limited to relevant columns, no aggregate records, and no RECID.
+        Also subtracts features that should be nonnegative.
     """
     # Include RECID to exclude 4 aggregate records.
     input_cols = [x.upper() for x in COLS] + ['RECID']
     raw = pd.read_csv('puf2011.csv', usecols=input_cols)
+    # Calculate differences of variables that must be nonnegative for Tax-Calculator to run.
+    # Per https://github.com/donboyd5/synpuf/issues/17, e00600 must be weakly greater than
+    # e00650 and e01500 must be weakly greater than e01700.
+    raw['e00600_minus_e00650'] = raw.E00600 - raw.E00650
+    raw['e01500_minus_e01700'] = raw.E01500 - raw.E01700
+    raw.drop(['E00600', 'E01500'], axis=1, inplace=True)
     return raw[~raw.RECID.isin(AGG_RECIDS)].drop('RECID', axis=1)
 
 
-def synthesize_puf_rf(puf=None, random_state=0, seed_cols=['DSI', 'XTOT'], trees=20):
+def add_subtracted_features(df):
+    """Add back the subtracted features (to be used after synthesis).
+
+    Args:
+        df: DataFrame.
+   
+    Returns:
+        Nothing. Adds features and drops old ones in place.
+    """
+    df['E00600'] = df.E00650 + df.e00600_minus_e00650
+    df['E01500'] = df.E01700 + df.e01500_minus_e01700
+    df.drop(['e00600_minus_e00650', 'e01500_minus_e01700'], axis=1, inplace=True)
+
+    
+def synthesize_puf_rf(puf=None, random_state=0, seed_cols=SEED_COLS, trees=20):
     """Synthesize PUF via random forests.
     
     Args:
         puf: PUF file produced from load_puf(). If not provided, will load via load_puf().
-        random_state: random_state passed to synthimpute rf_synth.
-        seed_cols: seed_cols passed to synthimpute rf_synth.
-        trees: trees passed to synthimpute rf_synth.
+        random_state: random_state passed to synthimpute rf_synth. Defaults to 0.
+        seed_cols: seed_cols passed to synthimpute rf_synth. Defaults to
+                   ['MARS', 'E00100', 'E09600', 'XTOT', 'S006', 'F6251', 'MIDR', 'FDED', 'DSI'].
+        trees: trees passed to synthimpute rf_synth. Defaults to 20.
  
     Returns:
         PUF synthesis produced via random forests.
     """
     if puf is None:
         puf = load_puf()
-    return si.rf_synth(puf, random_state=random_state, seed_cols=seed_cols, trees=trees)
+    result = si.rf_synth(puf, random_state=random_state, seed_cols=seed_cols, trees=trees)
+    add_subtracted_features(result)
+    return result.round()
 
 
 def synthesize_puf_synthpop(puf=None):
@@ -123,6 +152,6 @@ def synthesize_puf_synthpop(puf=None):
     pandas2ri.activate()
     robjects.r('library(synthpop)')
     robjects.globalenv['puf'] = puf
-    return robjects.r('syn(puf)$syn')
-    
-    
+    result = robjects.r('syn(puf)$syn')
+    add_subtracted_features(result)
+    return result.round()
