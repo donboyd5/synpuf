@@ -7,7 +7,7 @@ from rpy2.robjects import r, pandas2ri
 
 # Columns to synthesize listed in https://github.com/donboyd5/synpuf/issues/4.
 COLS = [
-    'Dsi',
+    'DSI',
     'E00200',
     'E00300',
     'E00400',
@@ -60,18 +60,18 @@ COLS = [
     'E62900',
     'E87521',
     'E87530',
-    'Eic',
+    'EIC',
     'F2441',
     'F6251',
-    'Fded',
-    'Mars',
-    'Midr',
+    'FDED',
+    'MARS',
+    'MIDR',
     'N24',
     'P08000',
     'P22250',
     'P23250',
     'S006',
-    'Xtot']
+    'XTOT']
 
 
 CALCULATED_COLS = ['E00100', 'E09600']
