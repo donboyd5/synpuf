@@ -1,7 +1,6 @@
 import pandas as pd
 import synthimpute as si
 # Also requires installing tzlocal
-from rpy2.robjects.packages import importr
 import rpy2.robjects as robjects
 from rpy2.robjects import r, pandas2ri
 
