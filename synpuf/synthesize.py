@@ -87,26 +87,31 @@ SEED_COLS = (SEED_COLS + CALCULATED_COLS +
 AGG_RECIDS = [999996, 999997, 999998, 999999]
 
 
-def load_puf(f='puf2011.csv'):
+def load_puf(f='puf2011.csv', include_RECID=False):
     """Load raw PUF for synthesis.
     
     Args:
         f: Filepath and name. Defaults to 'puf2011.csv' in the current directory.
+        include_RECID: Logical indicating whether to include the RECID field. Defaults
+                       to False.
         
     Returns:
-        DataFrame limited to relevant columns, no aggregate records, and no RECID.
+        DataFrame limited to relevant columns, no aggregate records, and no RECID (unless specified).
         Also subtracts features that should be nonnegative.
     """
     # Include RECID to exclude 4 aggregate records.
     input_cols = COLS + CALCULATED_COLS + ['RECID']
-    raw = pd.read_csv(f, usecols=input_cols)
+    puf = pd.read_csv(f, usecols=input_cols)
     # Calculate differences of variables that must be nonnegative for Tax-Calculator to run.
     # Per https://github.com/donboyd5/synpuf/issues/17, e00600 must be weakly greater than
     # e00650 and e01500 must be weakly greater than e01700.
-    raw['e00600_minus_e00650'] = raw.E00600 - raw.E00650
-    raw['e01500_minus_e01700'] = raw.E01500 - raw.E01700
-    raw.drop(['E00600', 'E01500'], axis=1, inplace=True)
-    return raw[~raw.RECID.isin(AGG_RECIDS)].drop('RECID', axis=1)
+    puf['e00600_minus_e00650'] = puf.E00600 - puf.E00650
+    puf['e01500_minus_e01700'] = puf.E01500 - puf.E01700
+    puf.drop(['E00600', 'E01500'], axis=1, inplace=True)
+    puf = puf[~puf.RECID.isin(AGG_RECIDS)]
+    if include_RECID:
+        return puf
+    return puf.drop('RECID', axis=1)
 
 
 def add_subtracted_features(df):
