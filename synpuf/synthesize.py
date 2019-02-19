@@ -122,8 +122,10 @@ def add_subtracted_features(df):
     """
     df['E00600'] = df.E00650 + df.e00600_minus_e00650
     df['E01500'] = df.E01700 + df.e01500_minus_e01700
-    df.drop(['e00600_minus_e00650', 'e01500_minus_e01700'] + CALCULATED_COLS,
-            axis=1, inplace=True)
+    # Drop calculated columns if they exist.
+    drops = [c for c in ['e00600_minus_e00650', 'e01500_minus_e01700'] + CALCULATED_COLS
+             if c in df.index]
+    df.drop(drops, axis=1, inplace=True)
 
 
 def get_puf_columns(seed=True, categorical=True, calculated=True):
