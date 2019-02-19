@@ -74,14 +74,10 @@ COLS = [
     'XTOT']
 
 
-CALCULATED_COLS = ['E00100', 'E09600']
-
-
-# Consider adding E00100 and E09600.
 SEED_COLS = ['MARS', 'XTOT', 'S006']
-CLASSIFICATION_COLS = ['F6251', 'MIDR', 'FDED', 'DSI']
-SEED_COLS = (SEED_COLS + CALCULATED_COLS +
-             CLASSIFICATION_COLS)  # Until rf_synth handles classification.
+# Until rf_synth handles classification.
+CATEGORICAL_COLS = ['F6251', 'MIDR', 'FDED', 'DSI']
+CALCULATED_COLS = ['E00100', 'E09600']
 
 
 AGG_RECIDS = [999996, 999997, 999998, 999999]
@@ -129,8 +125,28 @@ def add_subtracted_features(df):
     df.drop(['e00600_minus_e00650', 'e01500_minus_e01700'] + CALCULATED_COLS,
             axis=1, inplace=True)
 
+
+def get_puf_columns(seed=True, categorical=True, calculated=True):
+    """Get a list of columns.
+
+    Args:
+        seed: Whether to include standard seed columns: ['MARS', 'XTOT', 'S006']
+        categorical: Whether to include categorical columns: ['F6251', 'MIDR', 'FDED', 'DSI']
+        calculated: Whether to include calculated columns: ['E00100', 'E09600']
+
+    Returns: List of columns.
+    """
+    res = []
+    if seed:
+        res += SEED_COLS
+    if categorical:
+        res += CATEGORICAL_COLS
+    if calculated:
+        res += CALCULATED_COLS
+    return res
+
     
-def synthesize_puf_rf(puf=None, random_state=0, seed_cols=SEED_COLS, trees=20):
+def synthesize_puf_rf(puf=None, random_state=0, seed_cols=get_puf_columns(), trees=20):
     """Synthesize PUF via random forests.
     
     Args:
