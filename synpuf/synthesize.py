@@ -148,7 +148,8 @@ def get_puf_columns(seed=True, categorical=True, calculated=True):
     return res
 
     
-def synthesize_puf_rf(puf=None, random_state=0, seed_cols=get_puf_columns(), trees=20):
+def synthesize_puf_rf(puf=None, random_state=0, seed_cols=get_puf_columns(), trees=20,
+                      **kwargs):
     """Synthesize PUF via random forests.
     
     Args:
@@ -157,13 +158,15 @@ def synthesize_puf_rf(puf=None, random_state=0, seed_cols=get_puf_columns(), tre
         seed_cols: seed_cols passed to synthimpute rf_synth. Defaults to
                    ['MARS', 'E00100', 'E09600', 'XTOT', 'S006', 'F6251', 'MIDR', 'FDED', 'DSI'].
         trees: trees passed to synthimpute rf_synth. Defaults to 20.
+        **kwargs: Other arguments passed to synthimpute rf_synth.
  
     Returns:
         PUF synthesis produced via random forests.
     """
     if puf is None:
         puf = load_puf()
-    result = si.rf_synth(puf, random_state=random_state, seed_cols=seed_cols, trees=trees)
+    result = si.rf_synth(puf, random_state=random_state, seed_cols=seed_cols, trees=trees,
+                         **kwargs)
     add_subtracted_features(result)
     return result.round()
 
